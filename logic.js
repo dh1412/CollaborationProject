@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const box = document.querySelectorAll(".grid div");
     var currentPlayer = 1;
+    const music = document.querySelector("#audio");
     const result = document.querySelector("#result");
     const possibleWin = [
         [0, 1, 2, 3],
@@ -88,7 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
     }
-    
+    music.play();
+    music.loop = true;
     
     for (let i = 0; i < box.length; i++) {
         
