@@ -21,23 +21,31 @@ body {
    background-size: cover;
 }
 
+#result {
+    text-align: center;
+    color: #1ad5ee;
+    font-size: 15px;
+    font-family: monospace;
+}
+
 .grid {
     border: 1px solid;
-    height: 120px;
-    width: 140px;
+    height: 600px;
+    width: 700px;
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
 }
 .grid div {
-    height: 20px;
-    width: 20px;
+    height: 100px;
+    width: 100px;
 }
 .player1 {
     background-color: red;
-    border-radius: 10px;
+    border-radius: 50px;
 }
 .player2 {
     background-color: yellow;
-    border-radius: 10px;
+    border-radius: 50px;
 }
 
