@@ -1,8 +1,14 @@
+//DOM
 document.addEventListener('DOMContentLoaded', function() {
+    //selects each div inside class grid and defines them as box
     const box = document.querySelectorAll(".grid div");
+    //sets the current player to 1, which will be the computer
     var currentPlayer = 1;
+    //selects id audio and defines it as music
     const music = document.querySelector("#audio");
+    //selects id result and defines it as result
     const result = document.querySelector("#result");
+    //lists all the possible win conditions
     const possibleWin = [
         [0, 1, 2, 3],
         [6, 5, 4, 3],
@@ -74,12 +80,16 @@ document.addEventListener('DOMContentLoaded', function() {
         [12, 19, 26, 33],
         [13, 20, 27, 34],
       ]
+    //this is a function that checks for possible wins 
     function checkresult() {
+        //repeats for each possible win
         for (let x = 0; x < possibleWin.length; x++) {
+            //defines the conditions of winning
             const box1 = box[possibleWin[x][0]];
             const box2 = box[possibleWin[x][1]];
             const box3 = box[possibleWin[x][2]];
             const box4 = box[possibleWin[x][3]];
+            //if 4 boxes of win condition are occupied by the same player, it will add following string to result
             if (box1.classList.contains("player1") && box2.classList.contains("player1") && box3.classList.contains("player1") && box4.classList.contains("player1")) {
                 result.innerHTML = "Computer won"
             }
@@ -89,39 +99,55 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
     }
+    //this will play the music
     music.play();
+    //this will loop the music
     music.loop = true;
-    
+    //repeat for every single box in the grid; the game continues until every box is filled 
     for (let i = 0; i < box.length; i++) {
-        
+        //generates a random number and save it as variable randbox
         var randbox = Math.floor(Math.random() * 41 + 1);
+        //when the grid is clicked
         $(".grid").on("click", function(){
+            //if current player is 1
             if (currentPlayer == 1) {
+                //if the box contains class none; check if the box is occupied
                 if (box[randbox].classList.contains("none")){
+                    //remove class none since a circle will be placed
                     box[randbox].classList.remove("none");
+                    //add class player1 to indicate that the div(box) is taken by following player
                     box[randbox].classList.add("player1");
+                    //sets the value of current player to 2, so the turn goes over
                     currentPlayer = 2;
+                    //creates another random number
                     randbox = Math.floor(Math.random() * 41 + 1);
+                    //check if player 1 wins
                     checkresult();
                 }
+                //if something is already present in the box, generate another random number
                 else {
                     randbox = Math.floor(Math.random() * 41 + 1);
                 }
             }    
         });
-        box[i].onclick = function() {
-            
-            // if a circle is present in the box below, the next circle should drop on top of it
+        //when a box is clicked
+        $(box[i]).on("click", function() {
+            //if there is no circle inside the box
             if (box[i].classList.contains("none")){
+                //if current player is 2
                 if (currentPlayer == 2) {
+                    //same as player 1
                     box[i].classList.remove("none");
+                    //adds class player2
                     box[i].classList.add("player2");
+                    //current player is set to 1
                     currentPlayer = 1;
+                    //check if player 2 wins
                     checkresult();
                 }
             }
             
-        }
+        })
     }
     
 
