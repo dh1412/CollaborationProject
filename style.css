@@ -1,3 +1,26 @@
+h1{
+    text-align: center;
+    font-family: monospace;
+    color: #1ce698;
+    font-size: 30px;
+}
+
+p {
+    text-align: center;
+    font-family: monospace;
+    color: #1ad5ee;
+    font-size: 15px;
+}
+
+body {
+    background-image: url(https://i.pinimg.com/originals/f6/14/eb/f614eb38b548eb761c5a123a5ba7e64c.jpg);
+   background-color: #5289ff;
+   background-repeat: no-repeat;
+   background-position: left;
+   background-attachment: fixed;
+   background-size: cover;
+}
+
 .grid {
     border: 1px solid;
     height: 120px;
@@ -17,3 +40,4 @@
     background-color: yellow;
     border-radius: 10px;
 }
+
